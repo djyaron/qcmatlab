@@ -1,0 +1,7 @@
+jobname = C:\Users\Matteus\Qmatlab\testdat\CRE_pcm
+charge = 1
+norbs = 100
+nstates = 25
+efieldx =    0.000
+efieldy =    0.000
+efieldz =    0.000

@@ -1,0 +1,120 @@
+ Timestamp: 2013-06-05-08-17-37-00000010B0-win64
+ User Info: Matteus, Sora, 
+ *******************************************************************************
+                         SAM1 CALCULATION RESULTS
+ *******************************************************************************
+ *                             AMPAC Version 9.2.1
+ *                                Presented by:
+ *
+ *                           Semichem, Inc.
+ *                           www.semichem.com
+ *
+ *  SAM1     - THE SAM1 HAMILTONIAN TO BE USED
+ *  TRUSTE   - MINIMISE ENERGY USING TRUST REGION
+ *  T=AUTO   - AUTOMATIC DETERMINATION OF ALLOWED TIME
+ *  SINGLET  - IS THE REQUIRED SPIN MULTIPLICITY
+ *******************************************************************************
+ SAM1 RHF SINGLET TRUSTE T=AUTO
+  Title
+  Comment
+    ATOM    CHEMICAL   BOND LENGTH    BOND ANGLE    TWIST ANGLE
+   NUMBER   SYMBOL     (ANGSTROMS)     (DEGREES)     (DEGREES)
+    (I)                   NA:I          NB:NA:I      NC:NB:NA:I     NA    NB    NC
+      1     C 
+      2     H          1.00000                                       1
+      3     H          1.20000        109.47120 *                    1     2
+      4     H          1.07000 *      109.47125 *  -119.99999 *      1     3     2
+      5     H          1.07000 *      109.47122 *   120.00000 *      1     3     2
+
+   MOLECULAR POINT GROUP            SYMMETRY CRITERIA
+            Cs                          0.10000000
+
+          SINGLET STATE CALCULATION
+
+        **  REFERENCES TO PARAMETERS  **
+
+ H  (SAM1):  M.J.S. DEWAR et al, To be published.
+ C  (SAM1):  M.J.S. DEWAR et al, To be published.
+
+          CARTESIAN COORDINATES
+    NO.       ATOM               X         Y         Z
+       1 C        0.00000000      0.00000000      0.00000000
+       2 H        1.00000000      0.00000000      0.00000000
+       3 H       -0.39999965      1.13137097      0.00000000
+       4 H       -0.35666634     -0.50440312     -0.87365131
+       5 H       -0.35666686     -0.50440269      0.87365135
+
+ STANDARD DEVIATION ON ENERGY   (KCAL)       0.00000055519
+ STANDARD DEVIATION ON GRADIENT (KCAL/A,RD,RD)  0.00006958 0.00008516 0.00007020
+
+ SAM1 RHF SINGLET TRUSTE T=AUTO
+  Title
+  Comment
+
+     GEOMETRY OPTIMISED : ENERGY MINIMISED
+     SCF FIELD WAS ACHIEVED
+
+                              SAM1 CALCULATION
+                                                            VERSION 9.2.1
+
+                                                       Jun-05-2013
+
+          FINAL HEAT OF FORMATION =      -9.834866 kcal   
+                                  =     -41.158915 kJ   
+          ELECTRONIC ENERGY       =    -404.258145 eV
+          CORE-CORE REPULSION     =     190.937089 eV
+          TOTAL ENERGY            =    -213.321056 eV   
+          GRADIENT NORM           =       0.095874
+          RMS GRADIENT NORM       =       0.036237
+          UNSTABLE MODE(S)        =       0 ( ESTIMATE  )
+          IONIZATION POTENTIAL    =      13.377063 eV
+          HOMO-LUMO GAP           =      17.326922 eV
+          MOLECULAR POINT GROUP   = Cs    0.100000
+          NO. OF FILLED LEVELS    =       4 (OCC = 2)
+          MOLECULAR WEIGHT        =      16.043
+          SCF CALCULATIONS        =       6
+          COMPUTATION TIME        =       0.02     SECONDS
+
+    ATOM    CHEMICAL   BOND LENGTH    BOND ANGLE    TWIST ANGLE
+   NUMBER   SYMBOL     (ANGSTROMS)     (DEGREES)     (DEGREES)
+    (I)                   NA:I          NB:NA:I      NC:NB:NA:I     NA    NB    NC
+      1     C 
+      2     H          1.00000                                       1
+      3     H          1.20000        108.87499 *                    1     2
+      4     H          1.08843 *      106.77736 *  -121.40479 *      1     3     2
+      5     H          1.08843 *      106.77736 *   121.40478 *      1     3     2
+
+   MOLECULAR POINT GROUP            SYMMETRY CRITERIA
+            Cs                          0.10000000
+
+          RHF EIGENVALUES
+ -34.24681 -14.13055 -13.83132 -13.37706   3.94986   4.59895   4.86191   5.48647
+
+          NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+         ATOM NO.   TYPE          CHARGE        ATOM ELECTRON DENSITY
+       1 C           -0.4872          4.4872
+       2 H            0.1526          0.8474
+       3 H            0.0865          0.9135
+       4 H            0.1241          0.8759
+       5 H            0.1241          0.8759
+
+ DIPOLE (DEBYE)   X         Y         Z       TOTAL
+ POINT-CHG.     0.081    -0.092     0.000     0.122
+ HYBRID        -0.043     0.036     0.000     0.056
+ SUM            0.037    -0.056     0.000     0.067
+
+
+          CARTESIAN COORDINATES
+    NO.       ATOM               X         Y         Z
+       1 C        0.00000000      0.00000000      0.00000000
+       2 H        1.00000000      0.00000000      0.00000000
+       3 H       -0.38820530      1.13547199      0.00000000
+       4 H       -0.41218169     -0.47295555     -0.88944323
+       5 H       -0.41218166     -0.47295548      0.88944329
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+   1.30322   1.07822   1.04204   1.06373   0.84738   0.91353   0.87593   0.87593
+
+     ELAPSED WALL CLOCK TIME :      0.04 SECONDS
+     FULL COMPUTATION TIME :      0.03 SECONDS
