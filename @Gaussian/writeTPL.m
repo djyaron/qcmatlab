@@ -13,7 +13,8 @@ function tempDir = writeTPL(obj,jobname,atoms,keywords,rLink)
     tempDir = [tempname('C:\G09W\Scratch'), '\'];
     mkdir(tempDir);
     fid1 = fopen([tempDir,tpl_file],'w');
-
+    
+    fwrite(fid1,['%nProcShared= ',num2str(obj.nparallel),newline]);
     fwrite(fid1,['%chk=temp.chk',newline]);
     fwrite(fid1,['# ',keywords,' NoSymmetry iop(3/33=4) pop=regular',newline]);
     fwrite(fid1,newline);
