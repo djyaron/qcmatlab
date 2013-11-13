@@ -1,6 +1,6 @@
-%clear classes
+clear classes
 % This is a test of running just one molecule
-cd('..');
+% cd('..');
 %%
 qmatlab = pwd;
 
@@ -9,6 +9,8 @@ params.BASIS = {{'6-21G'}, 1};
 
 c = Controller(fullfile(qmatlab, 'testdat\'), 'h2', params, @Gaussian);
 c.runAll();
+
+result = c.outputs{1};
 
 cd(qmatlab);
 

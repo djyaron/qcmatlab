@@ -70,6 +70,9 @@ classdef Gaussian < Base
                         catch
                             resp2 = system([gaussianPath,'\formchk.exe ','temp.chk ', fch_file]);
                         end
+                        if( resp2 == 2057 )
+                           resp2 = system([gaussianPath,'\formchk.exe ','temp.chk ', fch_file]);
+                        end
                         if ( resp1 == 2057 )
                             disp( '  removing temporary files' );
                             delete( 'fort.6', 'gxx.d2e', 'gxx.inp', 'gxx.int', 'gxx.scr', ...
