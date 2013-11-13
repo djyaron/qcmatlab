@@ -1,4 +1,4 @@
-jobname = C:\Users\Matteus\Qmatlab\testdat\CRE_pcm
+jobname = C:\Users\Nicole\Documents\Research\QCmatlab\testdat\CRE_pcm
 charge = 1
 norbs = 100
 nstates = 25
