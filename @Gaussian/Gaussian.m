@@ -25,7 +25,6 @@ classdef Gaussian < Base
         charge
         multiplicity
         keywords
-        nparallel
     end
     methods
         function obj = Gaussian(dataPath, template, params)
