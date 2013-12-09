@@ -27,14 +27,13 @@ aOut = c.outputs{1};
 
 %% INDO Test
 qmatlab = pwd;
-dataPath = 'C:\Users\Matteus\Qmatlab\testdat\';
 template = 'CRE_pcm';
 config.charge = {{1}};
 config.norbs = {{100}};
 config.nstates = {{25}};
 config.field = {{[0,0,0]}};
 config.potfile = {{''}};
-parameterFile = 'C:\Users\Matteus\Qmatlab\testdat\parameters.txt';
+parameterFile = fullfile(qmatlab, 'testdat\parameters.txt');
 c = Controller(fullfile(qmatlab, 'testdat\'), template,config, @Indo, parameterFile);
 
 c.runAll; 
