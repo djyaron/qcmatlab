@@ -4,8 +4,8 @@ clear classes
 %%
 qmatlab = pwd;
 
-params.METHOD = {{'mp2'}, 1};
-params.BASIS = {{'6-21G'}, 1};
+params.METHOD = {{'b3lyp'}, 1};
+params.BASIS = {{'6-31G(d,p)'}, 1};
 
 c = Controller(fullfile(qmatlab, 'testdat\'), 'h2', params, @Gaussian);
 c.runAll();

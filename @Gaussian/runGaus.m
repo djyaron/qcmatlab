@@ -3,11 +3,11 @@ function terminated = runGaus(obj, jobname, tempDir)
     %Code should be backwards compatible
     %Need to do something about var named terminated
 
-    GausScript = writeGausScript( tempDir );
+    GausScript = obj.writeGausScript( tempDir );
     startTime = clock;
-    timeOut = obj.config.timeOut; % seconds
+    timeOut = -1; % seconds
     if ispc
-        launchBat([GausScript,' ', ...
+        obj.launchBat([GausScript,' ', ...
             fullfile(tempDir,jobname), ' &'] );
     else
         system(['chmod +x ', GausScript]);
@@ -28,4 +28,14 @@ function terminated = runGaus(obj, jobname, tempDir)
     end
 
     delete(GausScript);
+end
+
+function bool = timeCheck( start, timeOut )
+    %Returns 0 or 1 for if the current time (clock) is more than timeOut 
+    %seconds after start
+    if timeOut == -1
+        bool = 0;
+    else
+        bool = etime( clock, start ) > timeOut;
+    end
 end

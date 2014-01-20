@@ -22,7 +22,23 @@ classdef Base < handle
                x = f{i};
                obj.params.(x){1} = num2str(obj.params.(x){1}, '%.1f');
                if obj.params.(x){2}
-                   obj.filename = [obj.filename, '_', obj.params.(x){1}];
+               if findstr(obj.params.(x){1},'(d)')
+                  pos = findstr(obj.params.(x){1},'(d)');
+                  parName = ([obj.params.(x){1}(1:pos-1),'_d']);
+               elseif findstr(obj.params.(x){1},'(d,p)')
+                  pos = findstr(obj.params.(x){1},'(d,p)');
+                   parName = ([obj.params.(x){1}(1:pos-1),'_dp']);
+               elseif findstr(obj.params.(x){1},'*')
+                  pos = findstr(obj.params.(x){1},'*');
+                  if length(findstr(obj.params.(x){1},'*'))== 2
+                    parName = ([obj.params.(x){1}(1:pos(1)-1),'_strstr']);
+                  else
+                     parName = ([obj.params.(x){1}(1:pos-1),'_str']);
+                  end
+               else
+                  parName = obj.params.(x){1};
+               end
+                   obj.filename = [obj.filename, '_',parName];
                end
            end 
         end

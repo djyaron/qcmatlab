@@ -3,6 +3,7 @@ classdef Gaussian < Base
     %   Detailed explanation goes here
 
     properties
+        config
         Ehf         % Hartree Fock Energy
         Etot        % Total Energy (same as Hf if method = HF)
         mulliken    % Mulliken charges for atoms
@@ -63,7 +64,7 @@ classdef Gaussian < Base
                 while ( resp1 ~= 0 || resp2 ~= 0 )
                    cd(obj.dataPath);
                     try
-                        resp1 = system([g09exe,' ',gjf_file,' ',log_file]);
+                        resp1 = obj.runGaus([obj.filename,'.gjf'],obj.dataPath);
                         % convert checkpoint file to a formatted checkpoint file
                         try
                             resp2 = system([gaussianPath,'\formchk.exe ',chk_file, ' ', fch_file]);
