@@ -29,3 +29,13 @@ function terminated = runGaus(obj, jobname, tempDir)
 
     delete(GausScript);
 end
+
+function bool = timeCheck( start, timeOut )
+    %Returns 0 or 1 for if the current time (clock) is more than timeOut 
+    %seconds after start
+    if timeOut == -1
+        bool = 0;
+    else
+        bool = etime( clock, start ) > timeOut;
+    end
+end

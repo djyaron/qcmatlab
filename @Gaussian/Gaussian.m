@@ -3,6 +3,7 @@ classdef Gaussian < Base
     %   Detailed explanation goes here
 
     properties
+        config
         Ehf         % Hartree Fock Energy
         Etot        % Total Energy (same as Hf if method = HF)
         mulliken    % Mulliken charges for atoms

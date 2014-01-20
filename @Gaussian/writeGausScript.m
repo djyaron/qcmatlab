@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 function GausScript = writeGausScript(obj, dir )
+=======
+function GausScript = writeGausScript( obj, dir )
+>>>>>>> 2c73c4c0919600ac7a34704a08b02bb494a795ae
     
     newLine = char(10);
     if ispc
