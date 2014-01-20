@@ -61,10 +61,11 @@ classdef Gaussian < Base
 
                 resp1 = 1; resp2 = 1;
                 while ( resp1 ~= 0 || resp2 ~= 0 )
-                   cd(obj.dataPath);
+  
                     try
-                        resp1 = system([g09exe,' ',gjf_file,' ',log_file]);
+                        resp1 = obj.runGaus([obj.filename,'.gjf'],obj.dataPath);
                         % convert checkpoint file to a formatted checkpoint file
+                         cd(obj.dataPath);
                         try
                             resp2 = system([gaussianPath,'\formchk.exe ',chk_file, ' ', fch_file]);
                         catch

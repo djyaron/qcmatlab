@@ -1,4 +1,4 @@
-function GausScript = writeGausScript( dir )
+function GausScript = writeGausScript(obj, dir )
     
     newLine = char(10);
     if ispc
