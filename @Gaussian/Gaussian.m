@@ -64,7 +64,7 @@ classdef Gaussian < Base
                 while ( resp1 ~= 0 || resp2 ~= 0 )
   
                     try
-                        resp1 = obj.runGaus([obj.filename,'.gjf'],obj.dataPath);
+                        resp1 = obj.runGaus(obj.filename,obj.dataPath);
                         % convert checkpoint file to a formatted checkpoint file
                          cd(obj.dataPath);
                         try
