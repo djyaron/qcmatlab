@@ -264,7 +264,10 @@ obj.multiplicity = str2double(text{loc+2});
 try
     log_file = [obj.dataPath, obj.filename, '.log'];
     fid1 = fopen(log_file,'r');
-
+    if (fid1 == -1)
+        out_file = [obj.dataPath, obj.filename, '.out'];
+        fid1 = fopen(out_file,'r');
+    end
     t1 = textscan(fid1,'%s');
     fclose(fid1);
     text = t1{1};

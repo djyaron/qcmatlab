@@ -8,7 +8,7 @@ function terminated = runGaus(obj, jobname, tempDir)
     timeOut = -1; % seconds
     if ispc
         obj.launchBat([GausScript,' ', ...
-            fullfile(tempDir,jobname), ' &'] );
+            fullfile(tempDir,jobname), ' &'], tempDir );
     else
         system(['chmod +x ', GausScript]);
         system( [GausScript, ' ', fullfile(tempDir,jobname), ' &'] );

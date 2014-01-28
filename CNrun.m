@@ -15,6 +15,7 @@ for imol = 1:length(molecule)
 c = Controller(fullfile(qmatlab, 'CN\'), molecule{imol}, params, @Gaussian);
 c.runAll();
 result(ic) = c.outputs{1};
+Eexc(ic) = result(ic).Ees(1);
 ic = ic+1;
 end
 end
