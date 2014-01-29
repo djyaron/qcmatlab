@@ -1,9 +1,11 @@
 clear classes
 % This is a test of running just one molecule
+% Remeber that the directory has to always be the qcmatlab
 % cd('..');
 %%
 qmatlab = pwd;
 
+params.JOB = {{'td'}, 1};
 params.METHOD = {{'b3lyp'}, 1};
 params.BASIS = {{'6-31G(d,p)'}, 1};
 

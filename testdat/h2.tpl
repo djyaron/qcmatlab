@@ -1,7 +1,7 @@
 %rwf=temp.rwf
 %nosave
 %chk=temp.chk
-# METHOD/BASIS
+# JOB METHOD/BASIS
 
 title
 
