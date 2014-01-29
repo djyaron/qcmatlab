@@ -7,11 +7,8 @@ function terminated = runGaus(obj, jobname, tempDir)
     startTime = clock;
     timeOut = -1; % seconds
     if ispc
-       qmatlab = pwd;
-       cd(tempDir)
         obj.launchBat([GausScript,' ', ...
-            fullfile(tempDir,jobname), ' &'] );
-         cd(qmatlab)
+            fullfile(tempDir,jobname), ' &'], tempDir );
     else
         system(['chmod +x ', GausScript]);
         system( [GausScript, ' ', fullfile(tempDir,jobname), ' &'] );
