@@ -4,9 +4,9 @@ clear classes
 %%
 ic =1;
 qmatlab = pwd;
-molecule = {'CN5_td','CN7_td', 'CN9_td', 'CN11_td'};
-methods = {{'b3lyp'}, {'cam-b3lyp'}, {'M06-HF'}};
-basis = {{'6-31g'}, {'6-31g(d)'}, {'6-31g(d,p)'}};
+molecule = {'CN5_td'} %,'CN7_td', 'CN9_td', 'CN11_td'};
+methods = {{'hf'}, {'cam-b3lyp'}, {'M06-HF'}};
+basis = {{'sto-3g'}, {'6-31g(d)'}, {'6-31g(d,p)'}};
 for imet = 1:length(methods)
 params.METHOD = {methods{imet}, 1};
 for ibas = 1:length(basis)
