@@ -174,7 +174,7 @@ nprims = zeros(Nenergies, 1);
 % (1,:) = cont coefficients; (2,:) = prim exponents
 prims = cell(Nenergies,1);
 
-nsubtypes = [1 3 1] %6]; %  cartesian basis sets for s,p,d
+nsubtypes = [1 3 6]; %  cartesian basis sets for s,p,d
 ibasis = 0;
 iprim = 0;
 for ishell = 1:nshells
