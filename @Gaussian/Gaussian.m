@@ -46,6 +46,9 @@ classdef Gaussian < Base
             chk_file = [obj.dataPath, obj.filename, '.chk'];
 
             fid2 = fopen(log_file,'r');
+            if (fid2==-1)
+                fid2 = fopen(out_file,'r');
+            end
             if (fid2 == -1)
                 fid2 = fopen(out_file, 'r');
             end
