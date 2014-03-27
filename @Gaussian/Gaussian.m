@@ -39,12 +39,16 @@ classdef Gaussian < Base
             tpl_file = [obj.dataPath, obj.template,'.tpl'];
             filetext = fileread(tpl_file);
 
+            out_file = [obj.dataPath, obj.filename, '.out'];
             log_file = [obj.dataPath, obj.filename, '.log'];
             gjf_file = [obj.dataPath, obj.filename, '.gjf'];
             fch_file = [obj.dataPath, obj.filename, '.fch'];
             chk_file = [obj.dataPath, obj.filename, '.chk'];
 
             fid2 = fopen(log_file,'r');
+            if (fid2 == -1)
+                fid2 = fopen(out_file, 'r');
+            end
             if (fid2 == -1)
                 f = fieldnames(obj.params);
                 for i=1:length(f)

@@ -1,4 +1,5 @@
 function tempDir = writeTPL(obj,jobname,atoms,keywords,rLink)
+ 
     if isempty(atoms)
         atoms = 1:length(obj.Z);
     end
