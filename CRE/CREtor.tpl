@@ -1,7 +1,7 @@
 %nprocshared=4
-%chk=CREtor.chk
+%chk=temp.chk
 # ADD METHOD/6-31g(d,p) scrf=(solvent=water) scf=qc
-geom=(modredundant,connectivity) charge
+geom=(modredundant,connectivity)
 
 Title Card Required
 
@@ -289,8 +289,6 @@ Title Card Required
  57
 
 D 5 4 1 3 F
-
--2.8935 -0.0782 -0.0325 1.0000
 
 
 
