@@ -46,6 +46,7 @@ classdef Indo < Base
          [status, result] = system(jobstring);
          if (status == -1)
             disp(result)
+            error('INDO Failed')
          else
             disp('No problems with INDO-run')
          end
