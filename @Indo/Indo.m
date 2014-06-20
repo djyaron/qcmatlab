@@ -44,6 +44,11 @@ classdef Indo < Base
          
          disp(['about to do: ',jobstring]);
          [status, result] = system(jobstring);
+         if (status == -1)
+            disp(result)
+         else
+            disp('No problems with INDO-run')
+         end
          obj.parse()
       end
       function res = convertParams(obj,params)
