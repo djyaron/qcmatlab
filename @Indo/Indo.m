@@ -1,90 +1,101 @@
 classdef Indo < Base
-   properties
-      config
-      parameterFile
-      
-      norb        % number of atomic basis functions, and hf orbitals
-      aorbAtom    % (1,i) atom on which the ith atomic orbital resides
-      aorbType    % (1,i) type of ith atomic orbital
-      %  {s1=0,s2=1,p2x=2,p2y=3,p2z=4,s3=5,p3x=6,p3y=7,p3z=8}
-      % Hartree Fock Results:
-      nfilled     % number of filled molecular orbitals
-      hfE         % HF ground state energy
-      orbE        % (1,i) energy of ith orbital
-      orb         % (i,j) ith component of jth orbital
-      nsci        % number of sci states, with first being ground state
-      nscibasis   % number of basis functions (first being ground state)
-      esci        % (1,i) energies of ith sci state
-      r           %( i,j, icomp) transition (position) operator icomp = x,y,z
-      wfsci       % (i,j)  ith component of jth state
-      ehsci       % (i,1) hole of the ith SCI basis function (0 if GS)
-   end
-   properties (Transient)
-      osc         % (1,i) oscillator strength from gs to state i
-      rx          % r(:,:,1) for backwards compatibility, don't use now
-      ry          % r(:,:,2)
-      rz          % r(:,:,3)
-   end
-   methods
-      function obj = Indo(dataPath, template, params, paramfile)
-         obj = obj@Base(dataPath, template, params);
-         obj.config = obj.convertParams(params);
-         if (nargin < 4)
-            obj.parameterFile = 'paramfile';
-         else
-            obj.parameterFile = paramfile;
-         end
-      end
-      function run(obj)
-         indoexe = 'C:\mscpp\demo-dci\Release\demo-dci.exe';
-         
-         file_prefix = [obj.dataPath, obj.filename];
-         parameters(obj, file_prefix); % generates parameterfile (will need to add potfile)
-         jobstring = [indoexe,' ',obj.parameterFile];
-         
-         disp(['about to do: ',jobstring]);
-         [status, result] = system(jobstring);
-         if (status == -1)
-            disp(result)
-            error('INDO Failed')
-         else
-            disp('No problems with INDO-run')
-         end
-         obj.parse()
-      end
-      function res = convertParams(obj,params)
-         res.charge = 0;
-         res.norbs = 100;
-         res.nstates = 25;
-         res.field = [0,0,0];
-         res.potfile = '';
-         if(~isempty(params))
-            fnames = fieldnames(params);
-            for i = 1:length(fnames)
-               res.(fnames{i}) = params.(fnames{i}){1};
+    properties
+        config
+        parameterFile
+        
+        norb        % number of atomic basis functions, and hf orbitals
+        aorbAtom    % (1,i) atom on which the ith atomic orbital resides
+        aorbType    % (1,i) type of ith atomic orbital
+        %  {s1=0,s2=1,p2x=2,p2y=3,p2z=4,s3=5,p3x=6,p3y=7,p3z=8}
+        % Hartree Fock Results:
+        nfilled     % number of filled molecular orbitals
+        hfE         % HF ground state energy
+        orbE        % (1,i) energy of ith orbital
+        orb         % (i,j) ith component of jth orbital
+        nsci        % number of sci states, with first being ground state
+        nscibasis   % number of basis functions (first being ground state)
+        esci        % (1,i) energies of ith sci state
+        r           %( i,j, icomp) transition (position) operator icomp = x,y,z
+        wfsci       % (i,j)  ith component of jth state
+        ehsci       % (i,1) hole of the ith SCI basis function (0 if GS)
+        trans       % (25,2) the major transitions of the 25 states
+    end
+    properties (Transient)
+        osc         % (1,i) oscillator strength from gs to state i
+        rx          % r(:,:,1) for backwards compatibility, don't use now
+        ry          % r(:,:,2)
+        rz          % r(:,:,3)
+    end
+    methods
+        function obj = Indo(dataPath, template, params, paramfile)
+            obj = obj@Base(dataPath, template, params);
+            obj.config = obj.convertParams(params);
+            if (nargin < 4)
+                obj.parameterFile = 'paramfile';
+            else
+                obj.parameterFile = paramfile;
             end
-         end
-      end
-      function res = get.osc(obj)
-         res = zeros(1,obj.nsci);
-         for i=1:obj.nsci
-            res(1,i) = (obj.esci(1,i)-obj.esci(1,1)) * ...
-               ( obj.r(1,i,1)^2 + obj.r(1,i,2)^2 + obj.r(1,i,3)^2 );
-         end
-      end
-      function res = get.rx(obj)
-         res = obj.r(:,:,1);
-      end
-      function res = get.ry(obj)
-         res = obj.r(:,:,2);
-      end
-      function res = get.rz(obj)
-         res = obj.r(:,:,3);
-      end
-      function res = dipole(obj,istate,jstate)
-         % returns a vector that is the dipole(istate=jstate)
-         % or transition moment (istate ~= jstate)
-         res = reshape(obj.r(istate,jstate,:),[3,1]);
-      end
-   end
+        end
+        function run(obj)
+            indoexe = 'C:\mscpp\demo-dci\Release\demo-dci.exe';
+            
+            file_prefix = [obj.dataPath, obj.filename];
+            parameters(obj, file_prefix); % generates parameterfile (will need to add potfile)
+            jobstring = [indoexe,' ',obj.parameterFile];
+            
+            disp(['about to do: ',jobstring]);
+            [status, result] = system(jobstring);
+            if (status == -1)
+                disp(result)
+                error('INDO Failed')
+            else
+                disp('No problems with INDO-run')
+            end
+            obj.parse()
+        end
+        function res = convertParams(obj,params)
+            res.charge = 0;
+            res.norbs = 100;
+            res.nstates = 25;
+            res.field = [0,0,0];
+            res.potfile = '';
+            if(~isempty(params))
+                fnames = fieldnames(params);
+                for i = 1:length(fnames)
+                    res.(fnames{i}) = params.(fnames{i}){1};
+                end
+            end
+        end
+        function res = get.osc(obj)
+            res = zeros(1,obj.nsci);
+            for i=1:obj.nsci
+                res(1,i) = (obj.esci(1,i)-obj.esci(1,1)) * ...
+                    ( obj.r(1,i,1)^2 + obj.r(1,i,2)^2 + obj.r(1,i,3)^2 );
+            end
+        end
+        function res = get.rx(obj)
+            res = obj.r(:,:,1);
+        end
+        function res = get.ry(obj)
+            res = obj.r(:,:,2);
+        end
+        function res = get.rz(obj)
+            res = obj.r(:,:,3);
+        end
+        function res = dipole(obj,istate,jstate)
+            % returns a vector that is the dipole(istate=jstate)
+            % or transition moment (istate ~= jstate)
+            res = reshape(obj.r(istate,jstate,:),[3,1]);
+        end
+        function setTrans(obj,limit)
+            if (nargin < 2)
+                limit = 0.2;
+            end
+            obj.trans = cell(25,1);
+            for iexc = 1:25
+                Sn = (obj.wfsci(:,iexc).^2)>limit;
+                obj.trans{iexc} = obj.ehsci(Sn,:);
+            end
+        end
+    end
 end

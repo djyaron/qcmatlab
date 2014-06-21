@@ -38,4 +38,5 @@ temp = fread(fid1,[2,obj.nscibasis],'integer*4');
 obj.ehsci = temp' +1; % +1 fixes the counting from 0 issue
 obj.wfsci = fread(fid1,[obj.nscibasis,obj.nsci],'real*8');
 fclose(fid1);
+obj.setTrans;
 end
