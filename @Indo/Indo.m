@@ -48,6 +48,8 @@ classdef Indo < Base
             if (status == -1)
                 disp(result)
                 error('INDO Failed')
+            elseif ~isempty(regexp(result,'ERROR','ONCE'))
+                disp(result(regexp(result,'ERROR','ONCE'):end))
             else
                 disp('No problems with INDO-run')
             end
