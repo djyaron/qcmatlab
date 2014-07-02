@@ -28,7 +28,7 @@ done = 0;
 iatom = 1;
 while (~done)
    if (str2num(text{t1}) == iatom)
-      element{iatom} = {text{t1+1}};
+      element(iatom) = {text{t1+1}};
       r(1,iatom) = str2double( text{t1+2} );
       r(2,iatom) = str2double( text{t1+3} );
       r(3,iatom) = str2double( text{t1+4} );
