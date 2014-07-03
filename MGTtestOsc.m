@@ -5,7 +5,8 @@ load('myBreakpoints.mat');
 dbstop(s);
 % This is a test of running just one molecule
 % cd('..');
-mag = 0.2;
+yfield = 1; % if 0 then it will do xfield instead
+mag = 0.4;
 qmatlab = pwd;
 dataPath = [pwd,'\MGT\'];
 % if exist(fullfile(dataPath,'mgt_OSCYfield.mat'),'file')
@@ -30,10 +31,18 @@ dataPath = [pwd,'\MGT\'];
     
     
     for i = 1:length(molecules)
+        if yfield  
         yfield = aOut{i}.r(:,22)-aOut{i}.r(:,11);
         yfu =yfield'/norm(yfield);
         yF = yfu*mag;
         config.field = {{yF}};
+        else
+        Ns = find(ismember(aOut{i}.element,'N'));
+        xfield = aOut{i}.r(:,Ns(1))-aOut{i}.r(:,Ns(2));
+        xfu = xfield'/norm(xfield);
+        xF = xfu*mag;
+        config.field = {{xF}};
+        end
         dataPathEnd = {'MGT1','MGT2','MGT3','MGT4'};
         currentDir = fullfile(dataPath,[dataPathEnd{i},'\']);
         parameterFile = ([currentDir,'parameters.txt']);
