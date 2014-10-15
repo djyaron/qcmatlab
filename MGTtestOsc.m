@@ -14,11 +14,11 @@ dataPath = [pwd,'\MGT\'];
 % else
     % Ampac
     
-    molecules = {'MGT1','MGT2','MGT3','MGT4'};
-    filename = {'MGT1','MGT2','MGT3','MGT4'};
+  molecules = {'MGester','MGF1','MGF2','MGF3','MGF4'};
+%     filename = {'MGT1','MGT2','MGT3','MGT4'};
     params.METHOD = {{'am1'}, 1};
     for j = 1:length(molecules)
-        c = Controller(fullfile(qmatlab, 'MGT',[filename{j},'\']),molecules{j} , params, @Ampac);
+        c = Controller(fullfile(qmatlab, 'MGT','MGF\'),molecules{j} , params, @Ampac);
         c.runAll()
         aOut{j} = c.outputs{1};
     end
@@ -43,8 +43,8 @@ dataPath = [pwd,'\MGT\'];
         xF = xfu*mag;
         config.field = {{xF}};
         end
-        dataPathEnd = {'MGT1','MGT2','MGT3','MGT4'};
-        currentDir = fullfile(dataPath,[dataPathEnd{i},'\']);
+%         dataPathEnd = {'MGT1','MGT2','MGT3','MGT4'};
+        currentDir = fullfile(dataPath,'MGF\');
         parameterFile = ([currentDir,'parameters.txt']);
         template = aOut{i}.filename;
         c = Controller(currentDir, template,config, @Indo, parameterFile);
@@ -60,7 +60,7 @@ for i = 1: length(IOut)
     et = [1 2; 1 3];
     Ns = find(ismember(aOut{i}.element,'N'));
     xv = aOut{i}.r(:,Ns(1))-aOut{i}.r(:,Ns(2)); % have to doube check to see that the direction is right
-    yv = aOut{i}.r(:,22)-aOut{i}.r(:,11);
+    yv = aOut{i}.r(:,9)-aOut{i}.r(:,10);
     ux = xv/norm(xv)';
     uy =yv/norm(yv)';
     for it = 1:length(et)
